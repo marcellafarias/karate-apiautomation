@@ -1,7 +1,7 @@
 Feature: Search the city temperature by ID
 
   Background:
-    * url 'http://192.168.15.11:8080'
+    * url 'http://api.openweathermap.org'
     Given path '/data/2.5/weather'
 
   @byId
@@ -10,21 +10,20 @@ Feature: Search the city temperature by ID
     And param APPID = 'ed6192f0c0b428e0a893b4b44c8d5adb'
     When method get
     Then status 200
-    And match response contains 'Cairns'
 
   @byId
   Scenario: Search for a non-existent id
     And param id = '878878979879700988766'
     And param APPID = 'ed6192f0c0b428e0a893b4b44c8d5adb'
     When method get
-    Then status 404
+    Then status 400
 
   @byId
   Scenario: Search for a short id
     And param id = '0'
     And param APPID = 'ed6192f0c0b428e0a893b4b44c8d5adb'
     When method get
-    Then status 404
+    Then status 400
 
   @byId
   Scenario: Search for a invalid id

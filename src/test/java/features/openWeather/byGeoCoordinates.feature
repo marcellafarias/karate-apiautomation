@@ -1,7 +1,7 @@
 Feature: Search the city temperature by Geo Coordinates
 
   Background:
-    * url 'http://192.168.15.11:8080'
+    * url 'http://api.openweathermap.org'
     Given path '/data/2.5/weather'
 
   @byGeo
@@ -11,7 +11,6 @@ Feature: Search the city temperature by Geo Coordinates
     And param APPID = 'ed6192f0c0b428e0a893b4b44c8d5adb'
     When method get
     Then status 200
-    And match response contains 'Tawarano'
 
   @byGeo
   Scenario: Search by negative geographic coordinates
@@ -20,4 +19,3 @@ Feature: Search the city temperature by Geo Coordinates
     And param APPID = 'ed6192f0c0b428e0a893b4b44c8d5adb'
     When method get
     Then status 200
-    And match response contains 'Cairns'

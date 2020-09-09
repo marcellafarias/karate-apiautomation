@@ -1,7 +1,7 @@
 Feature: Search the city temperature By Name
 
   Background:
-    * url 'http://192.168.15.11:8080'
+    * url 'http://api.openweathermap.org'
     Given path '/data/2.5/weather'
 
   @byName
@@ -10,8 +10,6 @@ Feature: Search the city temperature By Name
     And param APPID = 'ed6192f0c0b428e0a893b4b44c8d5adb'
     When method get
     Then status 200
-    And match response contains { "weather": }
-    And match response contains { "name":"Mountain View" }
 
   @byName
   Scenario: Search for a non-existent city
@@ -25,7 +23,7 @@ Feature: Search the city temperature By Name
     And param q = '898S89S8S9'
     And param APPID = 'ed6192f0c0b428e0a893b4b44c8d5adb'
     When method get
-    Then status 400
+    Then status 404
 
   @byName
   Scenario: Search by city without token
