@@ -1,7 +1,7 @@
 Feature: Search the city temperature by ID
 
   Background:
-    * url 'http://api.openweathermap.org'
+    * url 'http://samples.openweathermap.org'
     Given path '/data/2.5/weather'
 
   @byId
@@ -10,6 +10,7 @@ Feature: Search the city temperature by ID
     And param APPID = 'ed6192f0c0b428e0a893b4b44c8d5adb'
     When method get
     Then status 200
+    And match response contains { weather: '#notnull', id: 2172797, name: 'Cairns' }
 
   @byId
   Scenario: Search for a non-existent id
@@ -34,6 +35,6 @@ Feature: Search the city temperature by ID
 
   @byId
   Scenario: Search by city without token
-    And param id = '2643743'
+    And param id = 2643743
     When method get
     Then status 401
