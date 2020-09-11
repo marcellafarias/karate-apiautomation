@@ -11,6 +11,7 @@ Feature: Search the city temperature by Geo Coordinates
     And param APPID = 'ed6192f0c0b428e0a893b4b44c8d5adb'
     When method get
     Then status 200
+    And match response contains { coord:{"lon":139,"lat":35} , weather: '#notnull', name: 'Shuzenji' }
 
   @byGeo
   Scenario: Search by negative geographic coordinates
@@ -19,3 +20,4 @@ Feature: Search the city temperature by Geo Coordinates
     And param APPID = 'ed6192f0c0b428e0a893b4b44c8d5adb'
     When method get
     Then status 200
+    And match response contains { coord:{"lon":145.77,"lat":-16.92} , weather: '#notnull', name: 'Cairns' }
