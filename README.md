@@ -6,7 +6,7 @@ Follow the instructions at [Docker Hub](https://hub.docker.com/r/marcellafarias/
 
 1. Clone this repository:
 ```sh
-$ git clone https://github.com/marcellafarias/karate-apiautomation-zedelivery.git
+$ git clone https://github.com/marcellafarias/karate-apiautomation.git
 ```
 
 2. Navigate into the `karateApiAutomation` directory:
